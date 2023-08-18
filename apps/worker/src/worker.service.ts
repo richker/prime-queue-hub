@@ -3,6 +3,10 @@ import { Job } from 'bull';
 import { Injectable, Logger } from '@nestjs/common';
 import bigInt from 'big-integer';
 
+const THRESHOLD_VALUE = process.env.THRESHOLD_VALUE
+  ? Number(process.env.THRESHOLD_VALUE)
+  : 10000;
+
 @Injectable()
 @Processor('jobs')
 export class JobsProcessor {
@@ -23,7 +27,7 @@ export class JobsProcessor {
   }
 
   private calculateNthPrime(N: number): number {
-    return N < 10000
+    return N < THRESHOLD_VALUE
       ? this.calculateNthPrimeUsingSieve(N)
       : this.calculateNthPrimeUsingMillerRabin(N);
   }
