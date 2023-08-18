@@ -9,8 +9,8 @@ A microservices-based job queue management system built with NestJS. The system 
 - [Setup](#setup)
 - [Running the Project](#running-the-project)
 - [API Endpoints](#api-endpoints)
-- [Contributing](#contributing)
-- [License](#license)
+- [Error Handling and Logging](#error-handling-and-logging)
+
 
 ## Features
 
@@ -18,7 +18,11 @@ A microservices-based job queue management system built with NestJS. The system 
 - Retrieve the status and result of specific jobs.
 - Cancel specific jobs.
 - Asynchronous job processing using Bull queue.
-- Efficient prime number calculation using the Sieve of Eratosthenes algorithm.
+- Dynamic prime number calculation based on a threshold:
+   - Uses the Sieve of Eratosthenes algorithm for numbers below the threshold.
+   - Uses the Miller-Rabin test for numbers at or above the threshold.
+- Comprehensive error handling and logging for debugging and monitoring.
+- Input validation to ensure data integrity.
 
 ## Prerequisites
 
@@ -31,8 +35,8 @@ A microservices-based job queue management system built with NestJS. The system 
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/your-repo-link/job-queue-management-system.git
-   cd job-queue-management-system
+   git clone git@github.com:richker/prime-queue-hub.git
+   cd prime-queue-hub
    ```
 
 2. **Install Dependencies**
@@ -95,14 +99,9 @@ A microservices-based job queue management system built with NestJS. The system 
 
   `DELETE /jobs/:id`
 
-## Contributing
 
-If you'd like to contribute, please fork the repository and make changes as you'd like. Pull requests are warmly welcome.
+ ## Error Handling and Logging
 
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
----
-
-This README provides a comprehensive guide to setting up and running the project. You can further customize it as per your project's requirements and additional features.
+- Comprehensive error handling has been implemented using NestJS's exception filters.
+- All errors, including validation errors, are logged for easier debugging and monitoring.
+- The system uses NestJS's built-in Logger for logging.
