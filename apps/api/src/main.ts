@@ -4,8 +4,8 @@ import { ApiModule } from './api.module';
 import { AllExceptionsFilter } from 'src/shared/exceptions.filter';
 
 async function bootstrap() {
-  const logger = new Logger('Bootstrap'); // NestJS Logger
-  const port = process.env.PORT ? Number(process.env.PORT) : 3000; // Fetch port from environment variable or default to 3000
+  const logger = new Logger('Bootstrap');
+  const port = process.env.PORT ? Number(process.env.PORT) : 3000;
 
   // Create the NestJS application instance
   const app = await NestFactory.create(ApiModule);
